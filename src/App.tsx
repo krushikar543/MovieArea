@@ -5,6 +5,8 @@ import SearchIcon from "./search.svg";
 import "./App.css";
 
 const API_URL = "http://www.omdbapi.com?apikey=421e6f22";
+const url = 'https://api.themoviedb.org/3/movie/157336?api_key=c292a480a17a6b6ce90a300a06914c5e&append_to_response=videos';
+
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -14,13 +16,18 @@ const App = () => {
     searchMovies("");
   }, []);
 
-  const searchMovies = async (title) => {
+  const searchMovies = async (title: string) => {
     const response = await fetch(`${API_URL}&s=${title}`);
     const data = await response.json();
-
     setMovies(data.Search);
+
+    const r = await fetch(`${url}`);
+    const d = await r.json();
+    console.log(d);
+
   };
 
+  
   return (
     <div className="app">
       <h1>MovieArea</h1>
@@ -55,3 +62,9 @@ const App = () => {
 };
 
 export default App;
+
+
+
+
+// c292a480a17a6b6ce90a300a06914c5e
+
