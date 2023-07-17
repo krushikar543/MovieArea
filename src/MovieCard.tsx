@@ -1,6 +1,21 @@
 import React from 'react';
 
-const MovieCard = ({ movie  }) => {
+interface Movie {
+  imdbID: string;
+  Year: string;
+  Poster: string;
+  Title: string;
+  Type: string;
+}
+
+interface MovieCardProps {
+  movie: Movie;
+}
+
+const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
+
+
+// const MovieCard = ({ movie}) => {
   return (
     <div className="movie" key={movie.imdbID}>
       <div>
